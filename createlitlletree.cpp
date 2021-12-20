@@ -179,8 +179,16 @@ void CreateLitlleTree::on_pushButton_clicked()
 
 void CreateLitlleTree::on_getPrefixe_clicked()
 {
-    //methode parcourd Préfixe
-   //ui->label_5->setText( ui->vlvl0->text() +","+ui->v1Glvl1->text()+","+ ui->v1Glvl2->text()+","+ ui->v1Glvl3->text()+","+ )
+    //methode parcours Préfixe
+   ui->label_5->setText( ui->vlvl0->text() +","+ui->v1Glvl1->text()+","+ ui->v1Glvl2->text()+","+ ui->v1Glvl3->text()+","+ ui->v12Dlvl3->text()+","+ ui->v2Dlvl2->text()+","+ ui->v3Glvl3->text()+","+ui->v4Dlvl3->text()+","+
+                         ui->v2Clvl1->text()+","+ ui->v3Glvl2->text()+","+ui->v5Glvl3->text()+","+ui->v6Dlvl3->text()+","+ui->v4Dlvl2->text()+","+ui->v7Glvl3->text()+","+ui->v8Dlvl3->text()+","+ui->v3Dlvl1->text()+","+
+                         ui->v5Glvl2->text()+","+ui->v9Glvl3->text()+","+ui->v10Dlvl3->text()+","+ui->v6Dlvl2->text()+","+ui->v11Glvl3->text()+","+ui->v12Dlvl3->text());
 
+}
+
+
+void CreateLitlleTree::on_getSufixe_clicked()
+{
+    //methode parcours Sufixe
 }
 
