@@ -57,7 +57,7 @@
    <widget class="QLineEdit" name="n2Clvl1">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>240</x>
       <y>40</y>
       <width>41</width>
       <height>31</height>
@@ -80,7 +80,7 @@
    <widget class="QLabel" name="v2Clvl1">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>240</x>
       <y>50</y>
       <width>47</width>
       <height>13</height>
@@ -132,7 +132,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>80</x>
       <y>30</y>
       <width>41</width>
       <height>31</height>
@@ -142,7 +142,7 @@
    <widget class="QLabel" name="vlvl0">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>80</x>
       <y>40</y>
       <width>47</width>
       <height>13</height>
@@ -158,7 +158,7 @@
     <rect>
      <x>50</x>
      <y>230</y>
-     <width>621</width>
+     <width>661</width>
      <height>81</height>
     </rect>
    </property>
@@ -283,7 +283,7 @@
    <widget class="QLineEdit" name="n6Dlvl2">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>580</x>
       <y>40</y>
       <width>41</width>
       <height>31</height>
@@ -293,7 +293,7 @@
    <widget class="QLabel" name="v6Dlvl2">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>580</x>
       <y>50</y>
       <width>47</width>
       <height>13</height>
@@ -624,25 +624,12 @@
     <rect>
      <x>460</x>
      <y>100</y>
-     <width>171</width>
+     <width>221</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>lvl 1 aucune case doit etre = à 0</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>220</y>
-     <width>251</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>lvl 2 aucune case doit etre = à 0</string>
+    <string>lvl 1 si le nb de case = degrer de l'arbre</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -699,7 +686,7 @@
      <string>Préfixe</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="getSufixe">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -709,20 +696,20 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Sufixe</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="getInfixe">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>400</x>
       <y>60</y>
       <width>80</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Infixe</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -730,13 +717,104 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>601</width>
+      <width>351</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>401</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>les 0 ne seront pas a prendre en compte, ce sont les noeuds vide non utilisé</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelInfixeLvl0">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>40</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>396</x>
+      <y>40</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>40</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>561</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Equilabrage</string>
+    </property>
+    <widget class="QPushButton" name="getHauteur">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>80</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Hauteur</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>47</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

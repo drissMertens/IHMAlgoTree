@@ -34,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     ressource/Capture.PNG \
     ressource/tree.jpg
+    ressource/Tree.ico
 
 RESOURCES += \
     images.qrc

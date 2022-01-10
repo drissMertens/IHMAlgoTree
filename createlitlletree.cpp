@@ -49,15 +49,35 @@ void CreateLitlleTree::on_closeBnt_clicked()
 }
 
 
-void CreateLitlleTree::on_CreateLtree_clicked()
+int CreateLitlleTree::on_CreateLtree_clicked()
 {
     //a la validation on va enregistrer les valeurs des noeuds de notre arbre avec des conditions particuliere pour assurer l'enregistrement d'un arbres valide
     bool ok;
 
-   if(ui->nlvl0->text().toInt(&ok)== 0 ||  ui->n1Glvl1->text().toInt(&ok)==0 || ui->n2Clvl1->text().toInt(&ok) ==0 || ui->n3Dlvl1->text().toInt(&ok) ==0 )
+   if(ui->nlvl0->text().toInt(&ok)== 0 )
    {
        qDebug()<<"error of lvl 0";
-       QMessageBox::critical(this, "error", "Verifier bien le noyaux et les noeuds lvl 1 ne doivent pas etre = à 0");
+       QMessageBox::critical(this, "error", "Verifier bien le noyaux et les noeuds lvl 0 ne doivent pas etre = à 0");
+       return 1;
+
+   }
+   if(ui->n1Glvl1->text().toInt(&ok) > 0 && ui->n2Clvl1->text().toInt(&ok) ==0 && ui->n3Dlvl1->text().toInt(&ok) ==0 )
+   {
+       qDebug()<<"error of lvl 0";
+       QMessageBox::critical(this, "error", "Verifier bien le lvl 1 (2 noeuds min)");
+        return 1;
+   }
+   if(ui->n1Glvl1->text().toInt(&ok) == 0 && ui->n2Clvl1->text().toInt(&ok) > 0 && ui->n3Dlvl1->text().toInt(&ok) ==0 )
+   {
+       qDebug()<<"error of lvl 0";
+       QMessageBox::critical(this, "error", "Verifier bien le lvl 1 (2 noeuds min)");
+        return 1;
+   }
+   if(ui->n1Glvl1->text().toInt(&ok) == 0 && ui->n2Clvl1->text().toInt(&ok) == 0 && ui->n3Dlvl1->text().toInt(&ok) >0 )
+   {
+       qDebug()<<"error of lvl 0";
+       QMessageBox::critical(this, "error", "Verifier bien le lvl 1 (2 noeuds min)");
+        return 1;
    }
    else
    {
@@ -69,7 +89,7 @@ void CreateLitlleTree::on_CreateLtree_clicked()
 
         n1Glvl1 = ui->n1Glvl1->text().toInt(&ok);
         n2Clvl1 = ui->n2Clvl1->text().toInt(&ok);
-        n3Dlvl1 = ui->n2Clvl1->text().toInt(&ok);
+        n3Dlvl1 = ui->n3Dlvl1->text().toInt(&ok);
 
         //lvl 2 et lvl 3 liée car si le noeud n1 lvl 2 vaut 0 alors ses enfants qui sont n1 et n2 gauche et droite vaudrons 0
 
@@ -163,6 +183,7 @@ void CreateLitlleTree::on_CreateLtree_clicked()
 
         ui->CreateLtree->setEnabled(false);
         ui->groupBox_5->setEnabled(true);
+        return 0;
 }
 
 
@@ -190,5 +211,56 @@ void CreateLitlleTree::on_getPrefixe_clicked()
 void CreateLitlleTree::on_getSufixe_clicked()
 {
     //methode parcours Sufixe
+    ui->label_5->setText(ui->v1Glvl3->text()+","+ui->v2Dlvl3->text()+","+ui->v1Glvl2->text()+","+ui->v3Glvl3->text()+","+ui->v4Dlvl3->text()+","+ui->v2Dlvl2->text()+","+ui->v1Glvl1->text()+","+ui->v5Glvl3->text()+","+
+                         ui->v6Dlvl3->text()+","+ui->v3Glvl2->text()+","+ui->v7Glvl3->text()+","+ui->v8Dlvl3->text()+","+ui->v4Dlvl2->text()+","+ui->v2Clvl1->text()+","+ui->v9Glvl3->text()+","+ui->v10Dlvl3->text()+","+
+                         ui->v5Glvl2->text()+","+ui->v11Glvl3->text()+","+ui->v12Dlvl3->text()+","+ui->v6Dlvl2->text()+","+ui->v3Dlvl1->text()+","+ui->vlvl0->text());
+}
+
+
+void CreateLitlleTree::on_getInfixe_clicked()
+{
+    //methode parcours Infixe
+    //verification
+    if(ui->n1Glvl1->text().toInt() > 0 && ui->n2Clvl1->text().toInt() > 0 && ui->n3Dlvl1->text().toInt() > 0 )
+    {
+        ui->label_5->setText("imposible l'arbre à un degré < 2");
+    }
+    else
+    {
+        if(ui->n1Glvl1->text().toInt() > 0 && ui->n2Clvl1->text().toInt() > 0 && ui->n3Dlvl1->text().toInt() == 0)
+        {
+            ui->label_7->setText(ui->v1Glvl3->text()+","+ui->v1Glvl2->text()+","+ui->v2Dlvl3->text()+","+ui->v1Glvl1->text()+","+ui->v3Glvl3->text()+","+ui->v3Glvl2->text()+","+ui->v4Dlvl3->text());
+            ui->labelInfixeLvl0->setText(","+ui->vlvl0->text()+",");
+            ui->label_8->setText(ui->v5Glvl3->text()+","+ui->v3Glvl2->text()+","+ui->v6Dlvl3->text()+","+ui->v2Clvl1->text()+","+ui->v7Glvl3->text()+","+ui->v4Dlvl2->text()+","+ui->v8Dlvl3->text());
+        }
+        if(ui->n1Glvl1->text().toInt() > 0 && ui->n2Clvl1->text().toInt() == 0 && ui->n3Dlvl1->text().toInt() > 0)
+        {
+            ui->label_7->setText(ui->v1Glvl3->text()+","+ui->v1Glvl2->text()+","+ui->v2Dlvl3->text()+","+ui->v1Glvl1->text()+","+ui->v3Glvl3->text()+","+ui->v3Glvl2->text()+","+ui->v4Dlvl3->text());
+            ui->labelInfixeLvl0->setText(","+ui->vlvl0->text()+",");
+            ui->label_8->setText(ui->v9Glvl3->text()+","+ui->v5Glvl2->text()+","+ui->v10Dlvl3->text()+","+ui->v3Dlvl1->text()+","+ui->v11Glvl3->text()+","+ui->v6Dlvl3->text()+","+ui->v12Dlvl3->text());
+        }
+        if(ui->n1Glvl1->text().toInt() == 0 && ui->n2Clvl1->text().toInt() > 0 && ui->n3Dlvl1->text().toInt() > 0)
+        {
+            ui->label_7->setText(ui->v5Glvl3->text()+","+ui->v3Glvl2->text()+","+ui->v6Dlvl3->text()+","+ui->v2Clvl1->text()+","+ui->v7Glvl3->text()+","+ui->v4Dlvl2->text()+","+ui->v8Dlvl3->text());
+            ui->labelInfixeLvl0->setText(","+ui->vlvl0->text()+",");
+            ui->label_8->setText(ui->v9Glvl3->text()+","+ui->v5Glvl2->text()+","+ui->v10Dlvl3->text()+","+ui->v3Dlvl1->text()+","+ui->v11Glvl3->text()+","+ui->v6Dlvl3->text()+","+ui->v12Dlvl3->text());
+        }
+
+    }
+
+}
+
+
+void CreateLitlleTree::on_getHauteur_clicked()
+{
+    if (ui->n1Glvl3->text().toInt() > 0 || ui->n2Dlvl3->text().toInt() > 0 || ui->n3Glvl3->text().toInt() > 0 || ui->n3Glvl3->text().toInt() > 0 || ui->n4Dlvl3->text().toInt() > 0 || ui->n5Glvl3->text().toInt() > 0 ||
+        ui->n6Dlvl3->text().toInt() > 0 || ui->n7Glvl3->text().toInt() > 0 || ui->n8Dlvl3->text().toInt() > 0 || ui->n9Glvl3->text().toInt() > 0 || ui->n10Dlvl3->text().toInt() > 0 || ui->n11Glvl3->text().toInt() > 0 ||
+        ui->n12Dlvl3->text().toInt() > 0) {ui->label_9->setText("3");}
+    else {
+        if(ui->n1Glvl2->text().toInt() > 0 || ui->n2Dlvl2->text().toInt() > 0 || ui->n3Glvl2->text().toInt() > 0 || ui->n3Glvl2->text().toInt() > 0 || ui->n4Dlvl2->text().toInt() > 0 || ui->n5Glvl2->text().toInt() > 0 ||
+           ui->n6Dlvl2->text().toInt() > 0) {ui->label_9->setText("2");}
+        ui->label_9->setText("1");
+     }
+
 }
 

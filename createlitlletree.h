@@ -18,11 +18,17 @@ public:
 private slots:
     void on_closeBnt_clicked();
 
-    void on_CreateLtree_clicked();
+    int on_CreateLtree_clicked();
 
     void on_pushButton_clicked();
 
     void on_getPrefixe_clicked();
+
+    void on_getSufixe_clicked();
+
+    void on_getInfixe_clicked();
+
+    void on_getHauteur_clicked();
 
 private:
     Ui::CreateLitlleTree *ui;
